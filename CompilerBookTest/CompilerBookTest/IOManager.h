@@ -8,11 +8,9 @@ class IOManager
 public:
 	IOManager(std::string path);
 	~IOManager();
-	char getNextChar();
-	char getNextInBuffer();
 	long long int getPuntero();
-	bool setPuntero(long long int puntero);
-	char getNextCharInBuffer();
+	char getNext();
+	char seeNext();
 private:
 	std::string _path;
 	std::string _file;
@@ -20,5 +18,9 @@ private:
 	long long int _puntero;
 	long long int _punteroVistazo;
 	void igualarPunteros();
+	char getNextChar();
+	char getNextInBuffer();
+	bool setPuntero(long long int puntero);
+	char getNextCharInBuffer();
 };
 

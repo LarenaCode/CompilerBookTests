@@ -32,6 +32,7 @@ IOManager::~IOManager()
 Obtiene el caracter al que apunta el puntero actualmente.
 
 Devuelve el caracter, o bien NULL (0) si se llegó al final del archivo.
+Iguala los punteros.
 ****************************************************************************************/
 char IOManager::getNextChar() {
 	if (_puntero > _size)
@@ -89,4 +90,29 @@ char IOManager::getNextCharInBuffer() {
 		return NULL;
 	setPuntero(_punteroVistazo);
 	return getNextChar();
+}
+
+/*******************************************************************************************
+Obtiene el siguiente símbolo válido del código origen.
+
+Devuelve NULL (#0) si se llegó al EoF.
+********************************************************************************************/
+char IOManager::getNext() {
+	char salida;
+	do {
+		salida = getNextChar();
+	} while (salida == ' ' || salida == '\t');
+	return salida;
+}
+
+/*********************************************************************************************
+Obtiene el siguiente símbolo del buffer.
+
+Devuelve NULL (#0) si se ha llegado al final del lexema o EoF.
+**********************************************************************************************/
+char IOManager::seeNext() {
+	char salida = getNextInBuffer();
+	if (salida == ' ' || salida == '\t')
+		return NULL;
+	return salida;
 }
