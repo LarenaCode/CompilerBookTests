@@ -26,14 +26,14 @@ int TablaEstados::agregarEstado() {
 	_countEstados++;
 	bool **newGrafo = new bool *[_countEstados];
 	CeldaNodo *newVertices = new CeldaNodo[_countEstados];
-	for (int i = 0; i++; i < _countEstados) {
+	for (int i = 0; i++; (i < _countEstados)) {
 		newGrafo[i] = new bool[_countEstados];
 		if (i < (_countEstados - 1)) {
 			newVertices[i] = _vertices[i];
 		}
 	}
-	for (int i = 0; i++; i < _countEstados)
-		for (int k = 0; k++; k < _countEstados)
+	for (int i = 0; i++; (i < _countEstados))
+		for (int k = 0; k++; (k < _countEstados))
 			if (i == (_countEstados - 1) || k == (_countEstados - 1)) {
 				newGrafo[i][k] = false;
 			}
@@ -49,9 +49,9 @@ int TablaEstados::agregarEstado() {
 Operación de pertenencia del char valor en el conjunto de estados.
 *******************************************************************************************/
 bool TablaEstados::isInEstados(char valor) {
-	bool salida;
+	bool salida = false;
 	int i = 0;
-	while( i < _countEstados & !salida ) {
+	while( (i < _countEstados) & !salida ) {
 		salida = _vertices->valor == valor;
 		i++;
 	}
@@ -82,7 +82,7 @@ int TablaEstados::agregarNodo(char valor) {
 Agrega una arista unidireccional del nodo origen hacia el nodo destino.
 ********************************************************************************************/
 void TablaEstados::insertarArista(int NodoOrigen, int NodoDestino) {
-	if (NodoOrigen!=-1 & NodoOrigen < _countEstados & NodoDestino != -1 & NodoDestino < _countEstados)
+	if ((NodoOrigen!=-1) & (NodoOrigen < _countEstados) & (NodoDestino != -1) & (NodoDestino < _countEstados))
 		_aristas[NodoOrigen][NodoDestino] = true;
 }
 
@@ -92,7 +92,7 @@ Recupera el identificador del nodo con el valor pasado como parámetro, o si no l
 int TablaEstados::getNodo(char valor) {
 	int c = 0;
 	bool encontrado = false;
-	while (c < _countEstados & !encontrado) {
+	while ((c < _countEstados) & !encontrado) {
 		encontrado = _vertices[c].valor == valor;
 		c++;
 	}
