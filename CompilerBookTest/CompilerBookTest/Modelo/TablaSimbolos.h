@@ -1,3 +1,11 @@
+class Tabla
+{
+public:
+	Tabla();
+	~Tabla();
+private:
+	Tabla* NextTabla;
+};
 
 class TablaSimbolos
 {
@@ -8,11 +16,3 @@ private:
 	Tabla* _tabla;
 };
 
-class Tabla
-{
-public:
-	Tabla();
-	~Tabla();
-private:
-	Tabla* NextTabla;
-};

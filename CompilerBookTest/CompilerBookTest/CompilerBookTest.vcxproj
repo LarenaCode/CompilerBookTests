@@ -84,7 +84,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
@@ -114,7 +114,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -154,6 +154,7 @@
     <ClInclude Include="IOManager.h" />
     <ClInclude Include="Modelo\Lexico\AnalizadorLexico.h" />
     <ClInclude Include="Modelo\Lexico\C_Reservados.h" />
+    <ClInclude Include="Modelo\Lexico\TablaEstados.h" />
     <ClInclude Include="Modelo\Lexico\Token.h" />
     <ClInclude Include="Modelo\TablaSimbolos.h" />
     <ClInclude Include="pch.h" />
@@ -165,6 +166,7 @@
     <ClCompile Include="IOManager.cpp" />
     <ClCompile Include="Modelo\Lexico\AnalizadorLexico.cpp" />
     <ClCompile Include="Modelo\Lexico\C_Reservados.cpp" />
+    <ClCompile Include="Modelo\Lexico\TablaEstados.cpp" />
     <ClCompile Include="Modelo\Lexico\Token.cpp" />
     <ClCompile Include="Modelo\TablaSimbolos.cpp" />
     <ClCompile Include="pch.cpp">

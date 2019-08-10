@@ -22,25 +22,34 @@
     <Filter Include="Archivos de origen\Model\Lexico">
       <UniqueIdentifier>{e95f99fe-6a03-49f4-b87f-0035af9300c5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de origen\Model\Lexico\Encabezados">
+      <UniqueIdentifier>{5a3d9a46-464b-49dc-a199-61f74e896463}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Model\Lexico\Origen">
+      <UniqueIdentifier>{af1e7aa1-75f4-4b1a-9616-814d44e8b799}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="IOManager.h">
-      <Filter>Archivos de origen\Model\Lexico</Filter>
-    </ClInclude>
-    <ClInclude Include="Modelo\Lexico\C_Reservados.h">
-      <Filter>Archivos de origen\Model\Lexico</Filter>
-    </ClInclude>
-    <ClInclude Include="Modelo\Lexico\AnalizadorLexico.h">
-      <Filter>Archivos de origen\Model\Lexico</Filter>
-    </ClInclude>
-    <ClInclude Include="Modelo\Lexico\Token.h">
-      <Filter>Archivos de origen\Model\Lexico</Filter>
-    </ClInclude>
     <ClInclude Include="Modelo\TablaSimbolos.h">
       <Filter>Archivos de origen\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Modelo\Lexico\AnalizadorLexico.h">
+      <Filter>Archivos de origen\Model\Lexico\Encabezados</Filter>
+    </ClInclude>
+    <ClInclude Include="Modelo\Lexico\C_Reservados.h">
+      <Filter>Archivos de origen\Model\Lexico\Encabezados</Filter>
+    </ClInclude>
+    <ClInclude Include="IOManager.h">
+      <Filter>Archivos de origen\Model\Lexico\Encabezados</Filter>
+    </ClInclude>
+    <ClInclude Include="Modelo\Lexico\TablaEstados.h">
+      <Filter>Archivos de origen\Model\Lexico\Encabezados</Filter>
+    </ClInclude>
+    <ClInclude Include="Modelo\Lexico\Token.h">
+      <Filter>Archivos de origen\Model\Lexico\Encabezados</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -50,26 +59,29 @@
     <ClCompile Include="CompilerBookTest.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="IOManager.cpp">
-      <Filter>Archivos de origen\Model\Lexico</Filter>
-    </ClCompile>
-    <ClCompile Include="ConstantesIO.h">
-      <Filter>Archivos de origen\Model\Lexico</Filter>
-    </ClCompile>
     <ClCompile Include="ErrorMsg.cpp">
       <Filter>Archivos de origen\Model\Errors</Filter>
     </ClCompile>
-    <ClCompile Include="Modelo\Lexico\C_Reservados.cpp">
-      <Filter>Archivos de origen\Model\Lexico</Filter>
-    </ClCompile>
-    <ClCompile Include="Modelo\Lexico\AnalizadorLexico.cpp">
-      <Filter>Archivos de origen\Model\Lexico</Filter>
-    </ClCompile>
-    <ClCompile Include="Modelo\Lexico\Token.cpp">
-      <Filter>Archivos de origen\Model\Lexico</Filter>
-    </ClCompile>
     <ClCompile Include="Modelo\TablaSimbolos.cpp">
       <Filter>Archivos de origen\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="ConstantesIO.h">
+      <Filter>Archivos de origen\Model\Lexico\Encabezados</Filter>
+    </ClCompile>
+    <ClCompile Include="Modelo\Lexico\AnalizadorLexico.cpp">
+      <Filter>Archivos de origen\Model\Lexico\Origen</Filter>
+    </ClCompile>
+    <ClCompile Include="Modelo\Lexico\C_Reservados.cpp">
+      <Filter>Archivos de origen\Model\Lexico\Origen</Filter>
+    </ClCompile>
+    <ClCompile Include="IOManager.cpp">
+      <Filter>Archivos de origen\Model\Lexico\Origen</Filter>
+    </ClCompile>
+    <ClCompile Include="Modelo\Lexico\TablaEstados.cpp">
+      <Filter>Archivos de origen\Model\Lexico\Origen</Filter>
+    </ClCompile>
+    <ClCompile Include="Modelo\Lexico\Token.cpp">
+      <Filter>Archivos de origen\Model\Lexico\Origen</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

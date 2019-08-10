@@ -1,7 +1,6 @@
-#include "pch.h"
 #include "IOManager.h"
 #include "ConstantesIO.h"
-#include "ErrorMsg.cpp";
+
 #include <string>
 #include <fstream>
 
@@ -13,12 +12,15 @@ Si el path no existe entonces se sale del programa por error.
 IOManager::IOManager(std::string path) : _path(path)
 {
 	std::ifstream file(_path, std::ios::binary);
-	if (file.fail) {
-		FatalError("Código origen perdido",CODIGO_ERROR_ARCHIVO_INEXISTENTE);
+	if (file.fail()) {
+		//FatalError("Código origen perdido",CODIGO_ERROR_ARCHIVO_INEXISTENTE);
+		exit(256);
 	}
 	file.seekg(0, std::ios::end);
 	_size = file.tellg();
 	_file = new char[_size];
+	file.seekg(0, std::ios::beg);
+	file.read(&_file[0], _size);
 	_puntero = 0;
 	igualarPunteros();
 }
@@ -37,8 +39,10 @@ Iguala los punteros.
 char IOManager::getNextChar() {
 	if (_puntero > _size)
 		return NULL;
+	char salida = _file[_puntero];
+	_puntero++;
 	igualarPunteros();
-	return _file[_puntero];
+	return salida;
 }
 
 /****************************************************************************************
