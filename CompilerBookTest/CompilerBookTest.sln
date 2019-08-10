@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.28307.757
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CompilerBookTest", "CompilerBookTest\CompilerBookTest.vcxproj", "{D93F3BFB-1349-406F-AA3A-E12FA3554B20}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modelo", "Modelo", "{1FD6802C-15BA-40EC-A09A-68AD45DF3D71}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lexico", "Lexico", "{6E389B50-4865-4AF7-A345-394F3292D555}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -24,6 +28,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6E389B50-4865-4AF7-A345-394F3292D555} = {1FD6802C-15BA-40EC-A09A-68AD45DF3D71}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0A53A49D-5167-4CAB-9F37-E09E9BAC13CB}

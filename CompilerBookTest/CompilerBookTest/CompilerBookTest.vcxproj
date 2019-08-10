@@ -152,6 +152,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="IOManager.h" />
+    <ClInclude Include="Modelo\Lexico\AnalizadorLexico.h" />
+    <ClInclude Include="Modelo\Lexico\C_Reservados.h" />
+    <ClInclude Include="Modelo\Lexico\Token.h" />
+    <ClInclude Include="Modelo\TablaSimbolos.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
@@ -159,6 +163,10 @@
     <ClCompile Include="ConstantesIO.h" />
     <ClCompile Include="ErrorMsg.cpp" />
     <ClCompile Include="IOManager.cpp" />
+    <ClCompile Include="Modelo\Lexico\AnalizadorLexico.cpp" />
+    <ClCompile Include="Modelo\Lexico\C_Reservados.cpp" />
+    <ClCompile Include="Modelo\Lexico\Token.cpp" />
+    <ClCompile Include="Modelo\TablaSimbolos.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
