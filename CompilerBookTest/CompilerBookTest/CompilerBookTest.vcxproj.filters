@@ -13,10 +13,22 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Archivos de origen\Model">
+      <UniqueIdentifier>{3c544667-4241-49ae-91fe-472fdeb2c491}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Model\Parser">
+      <UniqueIdentifier>{e95f99fe-6a03-49f4-b87f-0035af9300c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Model\Errors">
+      <UniqueIdentifier>{480586b1-f4f0-4a28-8e50-f2c4ec547eb8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
       <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="IOManager.h">
+      <Filter>Archivos de origen\Model\Parser</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -25,6 +37,15 @@
     </ClCompile>
     <ClCompile Include="CompilerBookTest.cpp">
       <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="IOManager.cpp">
+      <Filter>Archivos de origen\Model\Parser</Filter>
+    </ClCompile>
+    <ClCompile Include="ConstantesIO.h">
+      <Filter>Archivos de origen\Model\Parser</Filter>
+    </ClCompile>
+    <ClCompile Include="ErrorMsg.cpp">
+      <Filter>Archivos de origen\Model\Errors</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
