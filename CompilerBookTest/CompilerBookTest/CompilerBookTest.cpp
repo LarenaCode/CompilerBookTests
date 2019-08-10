@@ -1,3 +1,4 @@
+#pragma once
 #include "IOManager.h"
 #include <iostream>
 

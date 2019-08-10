@@ -1,13 +1,20 @@
+#include "TablaEstados.h"
+#include <string>
 
 class Token
 {
 public:
-	Token(char *valor, int codigo);
+	
+	static Token createToken(std::string nombre);
+	static void inicialize();
 	~Token();
-	char* getValor();
+	std::string getNombre();
 	int getCodigo();
+	bool agregarValor(std::string valor, TablaEstados tablaEstados);
 
 private:
-	char *_valor;
+	Token(std::string nombre, int codigo);
+	std::string _nombre;
 	int _codigo;
+	static int _count;
 };
