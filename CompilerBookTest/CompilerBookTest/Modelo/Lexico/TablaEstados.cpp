@@ -15,6 +15,10 @@ TablaEstados::TablaEstados()
 
 TablaEstados::~TablaEstados()
 {
+	delete[] _vertices;
+	for (int i = 0; i < _countEstados; i++)
+		delete[] _aristas[i];
+	delete[] _aristas;
 }
 
 /******************************************************************************************
@@ -40,6 +44,7 @@ int TablaEstados::agregarEstado() {
 			else {
 				newGrafo[i][k] = _aristas[i][k];
 			}
+	delete[] _aristas;
 	_aristas = newGrafo;
 	return _countEstados;
 }
