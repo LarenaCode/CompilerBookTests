@@ -1,3 +1,4 @@
+#pragma once
 #include "AnalizadorLexico.h"
 #include "Token.h"
 #include "../TablaSimbolosInizializador.h"
@@ -12,7 +13,7 @@ AnalizadorLexico::~AnalizadorLexico()
 {
 }
 
-void AnalizadorLexico::insertReserverdWords(TablaSimbolosInizializador* t) {
+void AnalizadorLexico::insertReservedWords(TablaSimbolosInizializador* t) {
 	t->insertReservedWord("alignas", Enumerados::Token::ALIGNAS);
 	t->insertReservedWord("alignof", Enumerados::Token::ALIGNOF);
 	t->insertReservedWord("and", Enumerados::Token::AND);

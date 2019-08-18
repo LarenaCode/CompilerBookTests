@@ -6,7 +6,7 @@ class AnalizadorLexico {
 public:
 	AnalizadorLexico();
 	~AnalizadorLexico();
-	void insertReserverdWords(TablaSimbolosInizializador* t);
+	void insertReservedWords(TablaSimbolosInizializador* t);
 	Enumerados::Token getNextToken();
 
 };

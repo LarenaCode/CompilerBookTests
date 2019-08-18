@@ -28,14 +28,14 @@ int TablaSimbolos::insertSymbol(std::string nombre){
 }
 
 int TablaSimbolos::getID(std::string simbolo, Enumerados::Token token){
-	int a = _PalabrasReservadas.getSymbolId.getSymbolId(simbolo);
+	int a = _PalabrasReservadas.getSymbolId(simbolo);
 	if ( a > 0 ) {
 		token = static_cast<Enumerados::Token>(a);
 		return -2;
 	}
 	else {
 		stackTablas* t = _tablasIdentificadores;
-		while (t != nullptr | (a = t->_NodoSimbolos.getSymbolId(simbolo)) > 0)
+		while ((t != nullptr) | ((a = t->_NodoSimbolos.getSymbolId(simbolo)) > 0))
 			t = t->nxtNode;
 		if (t == nullptr)
 			return -1;

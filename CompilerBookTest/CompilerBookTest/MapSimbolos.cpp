@@ -14,7 +14,7 @@ MapSimbolos::~MapSimbolos()
 }
 
 int MapSimbolos::insertSymbol(std::string symbol, int id) {
-	if (_Simbolos.find(symbol) == _Simbolos.end) {
+	if (_Simbolos.find(symbol) == _Simbolos.end()) {
 		return -1;
 	}
 	else {
@@ -24,7 +24,7 @@ int MapSimbolos::insertSymbol(std::string symbol, int id) {
 }
 
 int MapSimbolos::getSymbolId(std::string symbol) {
-	if (_Simbolos.find(symbol) != _Simbolos.end) {
+	if (_Simbolos.find(symbol) != _Simbolos.end()) {
 		return _Simbolos.find(symbol)->second;
 	}
 	else {
