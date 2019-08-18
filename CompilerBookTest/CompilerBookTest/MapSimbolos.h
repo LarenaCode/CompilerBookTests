@@ -25,6 +25,8 @@ public:
 	a- Identificador correspondiente al símbolo insertado si tuvo éxito la operación.
 	b- (-1) si la operación no tuvo éxito ya que el símbolo ya existía.
 	****************************************************************************************/
+	int insertSymbol(std::string symbol, int id);
+
 	int insertSymbol(std::string symbol);
 
 	/****************************************************************************************
@@ -38,5 +40,6 @@ public:
 
 private:
 	std::map <std::string, int> _Simbolos;
+	int _count;
 };
 

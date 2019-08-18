@@ -4,9 +4,10 @@
 #include "TablaSimbolosInizializador.h"
 #include "Lexico/Token.h"
 #include "ITablaSimbolos.h"
+#include "../MapSimbolos.h"
 
 struct stackTablas  {
-		std::map<std::string, int> _StackSimbolos;
+		MapSimbolos _NodoSimbolos;
 		stackTablas* nxtNode;
 };
 
@@ -41,6 +42,8 @@ public:
 	Devuelve:
 	a- Un número positivo correspondiente al identificador del simbolo insertado.
 	b- (-1) si el símbolo ya existía en el bloque.
+	c- (-2) si el símbolo buscado es una palabra reservada, en este caso devuelte el enumerado
+		al token correspondiente.
 	*************************************************************************************************/
 	int insertSymbol(std::string nombre);
 	
@@ -79,7 +82,7 @@ public:
 	int deleteLastBlock();
 	
 private:
-	std::map<std::string, int> _PalabrasReservadas;
-	stackTablas _tablasIdentificadores;
+	MapSimbolos _PalabrasReservadas;
+	stackTablas* _tablasIdentificadores;
 };
 
