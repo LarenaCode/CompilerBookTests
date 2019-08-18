@@ -5,32 +5,35 @@
 
 TablaEstados::TablaEstados()
 {
-	_vertices = new CeldaNodo[1];
+	/*_vertices = new CeldaNodo[1];
 	_vertices[0].nodoO = false;
 	_vertices[0].codigoToken = NULL;
 	_vertices[0]._cAristas = 0;
-	_countEstados = 0;
+	_countEstados = 0;*/
 }
 
 
 TablaEstados::~TablaEstados()
 {
 
-	for (int i = 0; i < _countEstados; i++) {
+/*	for (int i = 0; i < _countEstados; i++) {
 		if (_vertices[i].aristas != nullptr)
 			delete[] _vertices[i].aristas;
 		else
 			continue;
 	}
-	delete[] _vertices;
+	delete[] _vertices;*/
 }
 
 CeldaNodo crearEstado(int codToken, bool nodoO ) {
-	CeldaNodo x;
-	x.aristas = nullptr;
+	/*CeldaNodo x;
+	//x.aristas = nullptr;
 	x._cAristas = 0;
 	x.codigoToken = codToken;
-	x.nodoO = nodoO;
+	x.nodoO = nodoO;*/
+	CeldaNodo x;
+	x.codigoToken = 0;
+	return x;
 }
 
 /******************************************************************************************
@@ -41,7 +44,7 @@ Se puede obtener una referencia al mismo con el valor que devuelve.
 TODO: delete[] revisar.
 *******************************************************************************************/
 int TablaEstados::agregarEstado( int codToken ) {
-	_countEstados++;
+	/*_countEstados++;
 	CeldaNodo *newVertices = new CeldaNodo[_countEstados];
 	for (int i = 0; i++; (i < _countEstados)) {
 		if (i < (_countEstados - 1)) {
@@ -53,7 +56,8 @@ int TablaEstados::agregarEstado( int codToken ) {
 	}
 	//delete[] _vertices;
 	_vertices = newVertices;
-	return _countEstados;
+	return _countEstados;*/
+	return 0;
 }
 
 
@@ -61,13 +65,14 @@ int TablaEstados::agregarEstado( int codToken ) {
 Operación de pertenencia del char valor en el conjunto de estados.
 *******************************************************************************************/
 bool TablaEstados::isInEstados(int valor) {
-	bool salida = false;
+	/*bool salida = false;
 	int i = 0;
 	while( (i < _countEstados) & !salida ) {
 		//salida = _vertices->nombre == valor;
 		i++;
 	}
-	return salida;
+	return salida;*/
+	return true;
 }
 
 /*******************************************************************************************
@@ -76,7 +81,7 @@ Agrega una arista unidireccional del nodo origen hacia el nodo destino.
 TODO: Revisar comportamiento delete.
 ********************************************************************************************/
 void TablaEstados::insertarArista(int NodoOrigen, int NodoDestino, char costo) {
-	if ((NodoOrigen != -1) & (NodoOrigen < _countEstados) & (NodoDestino != -1) & (NodoDestino < _countEstados)) {
+	/*if ((NodoOrigen != -1) & (NodoOrigen < _countEstados) & (NodoDestino != -1) & (NodoDestino < _countEstados)) {
 		CeldaNodo* x = getNodo(NodoOrigen);
 		int i = 0;
 		while ((x->aristas[i].Destino != getNodo(NodoDestino)) & (i<x->_cAristas))
@@ -97,30 +102,30 @@ void TablaEstados::insertarArista(int NodoOrigen, int NodoDestino, char costo) {
 			//delete[] x->aristas;
 			x->aristas = newAristas;
 		}
-	}
+	}*/
 }
 
 /********************************************************************************************
 Recupera el identificador del nodo con el valor pasado como parámetro, o si no lo encuentra -1.
 ********************************************************************************************/
 CeldaNodo* TablaEstados::getNodo(int valor) {
-	if ((valor>0) & (valor<_countEstados))
+	/*if ((valor>0) & (valor<_countEstados))
 		return &_vertices[valor];
-	else
+	else*/
 		return nullptr;
 }
 
 void agregarValor(Arista a, char valor) {
-	int c = ++a.cValores;
+	/*int c = ++a.cValores;
 	char* newValores = new char[c];
 	for (int k = 0; k < (c - 1); k++)
 		newValores[k] = a.Valores[k];
 	char x = valor;
-	newValores[c - 1] = x;
+	newValores[c - 1] = x;*/
 }
 
 bool TablaEstados::insertarToken(std::string palabra) {
-
+	return true;
 }
 
 void TablaEstados::reset() {
@@ -128,5 +133,5 @@ void TablaEstados::reset() {
 }
 
 int TablaEstados::recorrer(char valor) {
-
+	return 0;
 }

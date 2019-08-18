@@ -7,7 +7,7 @@ struct CeldaNodo {
 	*****************************************************************************************/
 	bool nodoO;
 	int codigoToken;
-	Arista* aristas;
+	//Arista* aristas;
 	int _cAristas;
 };
 

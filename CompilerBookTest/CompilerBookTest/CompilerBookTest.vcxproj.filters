@@ -51,6 +51,15 @@
     <ClInclude Include="Modelo\Lexico\Token.h">
       <Filter>Archivos de origen\Model\Lexico\Encabezados</Filter>
     </ClInclude>
+    <ClInclude Include="MapSimbolos.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="Modelo\ITablaSimbolos.h">
+      <Filter>Archivos de origen\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Modelo\TablaSimbolosInizializador.h">
+      <Filter>Archivos de origen\Model</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -80,8 +89,8 @@
     <ClCompile Include="Modelo\Lexico\TablaEstados.cpp">
       <Filter>Archivos de origen\Model\Lexico\Origen</Filter>
     </ClCompile>
-    <ClCompile Include="Modelo\Lexico\Token.cpp">
-      <Filter>Archivos de origen\Model\Lexico\Origen</Filter>
+    <ClCompile Include="MapSimbolos.cpp">
+      <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

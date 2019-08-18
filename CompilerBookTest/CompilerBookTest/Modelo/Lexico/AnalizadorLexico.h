@@ -1,9 +1,12 @@
+#pragma once
 #include "Token.h"
+#include "../TablaSimbolosInizializador.h"
 
-class AnalizadorLexico
-{
+class AnalizadorLexico {
 public:
 	AnalizadorLexico();
 	~AnalizadorLexico();
-	Token getNextToken();
+	void insertReserverdWords(TablaSimbolosInizializador* t);
+	Enumerados::Token getNextToken();
+
 };

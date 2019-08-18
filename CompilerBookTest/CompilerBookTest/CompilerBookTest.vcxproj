@@ -91,6 +91,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <CompileAs>CompileAsCpp</CompileAs>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -123,6 +124,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <CompileAs>CompileAsCpp</CompileAs>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -152,11 +154,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="IOManager.h" />
+    <ClInclude Include="MapSimbolos.h" />
+    <ClInclude Include="Modelo\ITablaSimbolos.h" />
     <ClInclude Include="Modelo\Lexico\AnalizadorLexico.h" />
     <ClInclude Include="Modelo\Lexico\C_Reservados.h" />
     <ClInclude Include="Modelo\Lexico\TablaEstados.h" />
     <ClInclude Include="Modelo\Lexico\Token.h" />
     <ClInclude Include="Modelo\TablaSimbolos.h" />
+    <ClInclude Include="Modelo\TablaSimbolosInizializador.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
@@ -164,10 +169,10 @@
     <ClCompile Include="ConstantesIO.h" />
     <ClCompile Include="ErrorMsg.cpp" />
     <ClCompile Include="IOManager.cpp" />
+    <ClCompile Include="MapSimbolos.cpp" />
     <ClCompile Include="Modelo\Lexico\AnalizadorLexico.cpp" />
     <ClCompile Include="Modelo\Lexico\C_Reservados.cpp" />
     <ClCompile Include="Modelo\Lexico\TablaEstados.cpp" />
-    <ClCompile Include="Modelo\Lexico\Token.cpp" />
     <ClCompile Include="Modelo\TablaSimbolos.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
