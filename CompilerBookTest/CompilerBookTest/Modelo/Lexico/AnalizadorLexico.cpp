@@ -100,6 +100,13 @@ void AnalizadorLexico::insertReservedWords(TablaSimbolosInizializador* t) {
 	t->insertReservedWord("while", Enumerados::Token::WHILE);
 	t->insertReservedWord("xor", Enumerados::Token::XOR);
 	t->insertReservedWord("xor_eq", Enumerados::Token::XOR_EQ);
+
+	t->insertReservedWord("override", Enumerados::Token::OVERRIDE);
+	t->insertReservedWord("final", Enumerados::Token::FINAL);
+	t->insertReservedWord("import", Enumerados::Token::IMPORT);
+	t->insertReservedWord("module", Enumerados::Token::MODULE);
+	t->insertReservedWord("transaction_safe", Enumerados::Token::TRANSACTION_SAFE);
+	t->insertReservedWord("transaction_safe_dynamic", Enumerados::Token::TRANSACTION_SAFE_DYNAMIC);
 }
 
 Enumerados::Token AnalizadorLexico::getNextToken() {
