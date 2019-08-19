@@ -2,9 +2,22 @@
 #include "AnalizadorLexico.h"
 #include "Token.h"
 #include "../TablaSimbolosInizializador.h"
+#include <string>
+#include "../../IOManager.h"
+#include "Numero.h"
+#include "Operador.h"
+#include "Palabra.h"
 
 
-AnalizadorLexico::AnalizadorLexico()
+bool isLetDigUnG(char c) {
+	return ((c >= 'a') && (c <= 'z')) || ((c >= 'A') && (c <= 'Z')) || (c == '_') || ((c >= '0') && (c <= '9'));
+}
+
+bool isNum(char c) {
+	return (c >= '0') && (c <= '9');
+}
+
+AnalizadorLexico::AnalizadorLexico(std::string file) : _iManager(file)
 {
 }
 
@@ -12,103 +25,335 @@ AnalizadorLexico::AnalizadorLexico()
 AnalizadorLexico::~AnalizadorLexico()
 {
 }
+/*******************************************************************************************
+Falta la implementación del operador de acceso al miembro a.*.
+Falta la implementación del operador de acceso al miembro &a.
+********************************************************************************************/
+Token AnalizadorLexico::getNextToken() {
+	char cActual = _iManager.getLastChar();
+	int estado = 0;
+	while (cActual != 0) {
+		switch (estado) {
+		/*
+			Estado incial.
+		*/
+		case 0:
+			switch (cActual) {
+			case '=':
+				estado = 1;
+				break;
+			case '+':
+				estado = 3;
+				break;
+			case '-':
+				estado = 6;
+				break;
+			case '*':
+				estado = 11;
+				break;
+			case '/':
+				estado = 13;
+				break;
+			case '%':
+				estado = 15;
+				break;
+			case '&':
+				estado = 17;
+				break;
+			case '|':
+				estado = 20;
+				break;
+			case '^':
+				estado = 23;
+				break;
+			case '<':
+				estado = 25;
+				break;
+			case '>':
+				estado = 29;
+				break;
+			case '!':
+				estado = 34;
+				break;
+			case '.':
+				estado = 36;
+				break;
+			default:
+				if (((cActual >= 'a') && (cActual <= 'z')) || ((cActual >= 'A') && (cActual <= 'Z')) || (cActual == '_')) {
+					estado = 38;
+				}
+				else {
+					if ((cActual >= '0')&(cActual <= '9')) {
+						estado = 39;
+					}
+					else
+						estado = 255;
+				}
+					break;
+			}
+			break;
+		/*
+			Operadores: signo =.
+		*/
+		case 1:
+			vistazo();
+			if (_vistazo != '=')
+				return Operador("=", Enumerados::Token::OP_ASIGN);
+			else {
+				estado = 2;
+				break;
+			}
+		case 2:
+			return Operador("==", Enumerados::Token::OP_LOGICO);
 
-void AnalizadorLexico::insertReservedWords(TablaSimbolosInizializador* t) {
-	t->insertReservedWord("alignas", Enumerados::Token::ALIGNAS);
-	t->insertReservedWord("alignof", Enumerados::Token::ALIGNOF);
-	t->insertReservedWord("and", Enumerados::Token::AND);
-	t->insertReservedWord("and_eq", Enumerados::Token::AND_EQ);
-	t->insertReservedWord("asm", Enumerados::Token::ASM);
-	t->insertReservedWord("atomic_cancel", Enumerados::Token::ATOMIC_CANCEL);
-	t->insertReservedWord("atomic_commit", Enumerados::Token::ATOMIC_COMMIT);
-	t->insertReservedWord("atomic_noexcept", Enumerados::Token::ATOMIC_NOEXCEPT);
-	t->insertReservedWord("auto", Enumerados::Token::AUTO);
-	t->insertReservedWord("bitand", Enumerados::Token::BITAND);
-	t->insertReservedWord("and_eq", Enumerados::Token::AND_EQ);
-	t->insertReservedWord("bitor", Enumerados::Token::BITOR);
-	t->insertReservedWord("bool", Enumerados::Token::BOOL);
-	t->insertReservedWord("break", Enumerados::Token::BREAK);
-	t->insertReservedWord("case", Enumerados::Token::CASE);
-	t->insertReservedWord("catch", Enumerados::Token::CATCH);
-	t->insertReservedWord("char8_t", Enumerados::Token::CHAR8_T);
-	t->insertReservedWord("char16_t", Enumerados::Token::CHAR16_T);
-	t->insertReservedWord("char32_t", Enumerados::Token::CHAR32_T);
-	t->insertReservedWord("class", Enumerados::Token::CLASS);
-	t->insertReservedWord("compl", Enumerados::Token::COMPL);
-	t->insertReservedWord("concept", Enumerados::Token::CONCEPT);
-	t->insertReservedWord("const", Enumerados::Token::CONST);
-	t->insertReservedWord("consteval", Enumerados::Token::CONSTEVAL);
-	t->insertReservedWord("constexpr", Enumerados::Token::CONSTEXPR);
-	t->insertReservedWord("const_cast", Enumerados::Token::CONST_CAST);
-	t->insertReservedWord("continue", Enumerados::Token::CONTINUE);
-	t->insertReservedWord("co_await", Enumerados::Token::CO_AWAIT);
-	t->insertReservedWord("co_return", Enumerados::Token::CO_RETURN);
-	t->insertReservedWord("co_yield", Enumerados::Token::CO_YIELD);
-	t->insertReservedWord("decltype", Enumerados::Token::DECLTYPE);
-	t->insertReservedWord("default", Enumerados::Token::DEFAULT);
-	t->insertReservedWord("delete", Enumerados::Token::DELETE);
-	t->insertReservedWord("export", Enumerados::Token::EXPORT);
-	t->insertReservedWord("extern", Enumerados::Token::EXTERN);
-	t->insertReservedWord("false", Enumerados::Token::FALSE);
-	t->insertReservedWord("float", Enumerados::Token::FLOAT);
-	t->insertReservedWord("for", Enumerados::Token::FOR);
-	t->insertReservedWord("friend", Enumerados::Token::FRIEND);
-	t->insertReservedWord("goto", Enumerados::Token::GOTO);
-	t->insertReservedWord("if", Enumerados::Token::IF);
-	t->insertReservedWord("inline", Enumerados::Token::INLINE);
-	t->insertReservedWord("int", Enumerados::Token::INT);
-	t->insertReservedWord("long", Enumerados::Token::LONG);
-	t->insertReservedWord("mutable", Enumerados::Token::MUTABLE);
-	t->insertReservedWord("namespace", Enumerados::Token::NAMESPACE);
-	t->insertReservedWord("new", Enumerados::Token::NEW);
-	t->insertReservedWord("noexcept", Enumerados::Token::NOEXCEPT);
-	t->insertReservedWord("not", Enumerados::Token::NOT);
-	t->insertReservedWord("not_eq", Enumerados::Token::NOT_EQ);
-	t->insertReservedWord("private", Enumerados::Token::PRIVATE);
-	t->insertReservedWord("protected", Enumerados::Token::PROTECTED);
-	t->insertReservedWord("public", Enumerados::Token::PUBLIC);
-	t->insertReservedWord("reflexpr", Enumerados::Token::REFLEXPR);
-	t->insertReservedWord("register", Enumerados::Token::REGISTER);
-	t->insertReservedWord("reinterpret_cast", Enumerados::Token::REINTERPRET_CAST);
-	t->insertReservedWord("requires", Enumerados::Token::REQUIRES);
-	t->insertReservedWord("return", Enumerados::Token::RETURN);
-	t->insertReservedWord("short", Enumerados::Token::SHORT);
-	t->insertReservedWord("signed", Enumerados::Token::SIGNED);
-	t->insertReservedWord("sizeof", Enumerados::Token::SIZEOF);
-	t->insertReservedWord("static", Enumerados::Token::STATIC);
-	t->insertReservedWord("static_assert", Enumerados::Token::STATIC_ASSERT);
-	t->insertReservedWord("static_cast", Enumerados::Token::STATIC_CAST);
-	t->insertReservedWord("struct", Enumerados::Token::STRUCT);
-	t->insertReservedWord("switch", Enumerados::Token::SWITCH);
-	t->insertReservedWord("synchronized", Enumerados::Token::SYNCHRONIZED);
-	t->insertReservedWord("template", Enumerados::Token::TEMPLATE);
-	t->insertReservedWord("this", Enumerados::Token::THIS);
-	t->insertReservedWord("thread_local", Enumerados::Token::THREAD_LOCAL);
-	t->insertReservedWord("throw", Enumerados::Token::THROW);
-	t->insertReservedWord("true", Enumerados::Token::TRUE);
-	t->insertReservedWord("try", Enumerados::Token::TRY);
-	t->insertReservedWord("typedef", Enumerados::Token::TYPEDEF);
-	t->insertReservedWord("typeid", Enumerados::Token::TYPEID);
-	t->insertReservedWord("typename", Enumerados::Token::TYPENAME);
-	t->insertReservedWord("union", Enumerados::Token::UNION);
-	t->insertReservedWord("unsigned", Enumerados::Token::UNSIGNED);
-	t->insertReservedWord("using", Enumerados::Token::USING);
-	t->insertReservedWord("virtual", Enumerados::Token::VIRTUAL);
-	t->insertReservedWord("void", Enumerados::Token::VOID);
-	t->insertReservedWord("volatile", Enumerados::Token::VOLATILE);
-	t->insertReservedWord("wchar_t", Enumerados::Token::WCHAR_T);
-	t->insertReservedWord("while", Enumerados::Token::WHILE);
-	t->insertReservedWord("xor", Enumerados::Token::XOR);
-	t->insertReservedWord("xor_eq", Enumerados::Token::XOR_EQ);
+		/*
+			Operadores signo +.
+		*/
+		case 3:
+			vistazo();
+			switch (_vistazo) {
+			case '=':
+				estado = 4;
+				break;
+			case '+':
+				estado = 5;
+			default:
+				return Operador("+", Enumerados::Token::OP_MAT);
+			}
+		case 4:
+			return Operador("+=", Enumerados::Token::OP_ASIGN);
+		case 5:
+			return Operador("++", Enumerados::Token::OP_ASIGN);
+		/*
+		Operadores signo -.
+		*/
+		case 6:
+			vistazo();
+			switch (_vistazo)
+			{
+			case '=':
+				estado = 7;
+				break;
+			case '-':
+				estado = 8;
+				break;
+			case '>':
+				estado = 9;
+				break;
+			default:
+				return Operador("-", Enumerados::Token::OP_MAT);
+			}
+		case 7:
+			return Operador("-=", Enumerados::Token::OP_ASIGN);
+		case 8:
+			return Operador("--", Enumerados::Token::OP_ASIGN);
+		case 9:
+			vistazo();
+			if (_vistazo != '*')
+				return Operador("->", Enumerados::Token::OP_MEM_ACCESS);
+			else {
+				estado = 10;
+				break;
+			}
+		case 10:
+			return Operador("->*", Enumerados::Token::OP_MEM_ACCESS);
+		/*
+			Operadores signo *.
+		*/
+		case 11:
+			vistazo();
+			switch (_vistazo) {
+			case '=':
+				estado = 12;
+				break;
+			default:
+				return Operador("*", Enumerados::Token::OP_MAT);
+			}
+		case 12:
+			return Operador("*=", Enumerados::Token::OP_ASIGN);
+		case 13:
+			vistazo();
+			if (_vistazo != '=')
+				return Operador("/", Enumerados::Token::OP_MAT);
+			else {
+				estado = 14;
+				break;
+			}
+		case 14:
+			return Operador("/=", Enumerados::Token::OP_ASIGN);
+		/*
+			Operadores signo %.
+		*/
+		case 15:
+			vistazo();
+			if (_vistazo != '=')
+				return Operador("%", Enumerados::Token::OP_MAT);
+			else {
+				estado = 16;
+				break;
+			}
+		case 16:
+			return Operador("%=", Enumerados::Token::OP_ASIGN);
+		/*
+			Operadores signo &.
+		*/
+		case 17:
+			vistazo();
+			switch (_vistazo) {
+			case '=':
+				estado = 18;
+				break;
+			case '&':
+				estado = 19;
+				break;
+			default:
+				return  Operador("&", Enumerados::Token::OP_MAT);
+			}
+		case 18:
+			return Operador("&=", Enumerados::Token::OP_ASIGN);
+		case 19:
+			return Operador("&&", Enumerados::Token::OP_LOGICO);
+		/*
+			Operadores signo |.
+		*/
+		case 20:
+			switch (vistazo()) {
+			case '=':
+				estado = 21;
+				break;
+			case '|':
+				estado = 22;
+				break;
+			default:
+				return  Operador("|", Enumerados::Token::OP_MAT);
+			}
+		case 21:
+			return Operador("|=", Enumerados::Token::OP_ASIGN);
+		case 22:
+			return Operador("||", Enumerados::Token::OP_LOGICO);
+		/*
+			Operadores signo ^.
+		*/
+		case 23:
+			if (vistazo() != '=')
+				return Operador("^", Enumerados::Token::OP_MAT);
+			else {
+				estado = 24;
+				break;
+			}
+		case 24:
+			return Operador("^=", Enumerados::Token::OP_ASIGN);
+		/*
+			Operadores signo <.
+		*/
+		case 25:
+			switch (vistazo()) {
+			case '=':
+				estado = 26;
+				break;
+			case '<':
+				estado = 27;
+				break;
+			default:
+				return Operador("<", Enumerados::Token::OP_LOGICO);
+			}
+		case 26:
+			if (vistazo() != '>')
+				return Operador("<=", Enumerados::Token::OP_LOGICO);
+			else {
+				estado = 33;
+				break;
+			}
+		case 33:
+			return Operador("<=>", Enumerados::Token::OP_LOGICO);
+		case 27:
+			if (vistazo() != '=')
+				return Operador("<<", Enumerados::Token::OP_MAT);
+			else {
+				estado = 28;
+				break;
+			}
+		case 28:
+			return Operador("<<=", Enumerados::Token::OP_ASIGN);
+		/*
+					Operadores signo >.
+		*/
+		case 29:
+			switch (vistazo()) {
+			case '=':
+				estado = 30;
+				break;
+			case '>':
+				estado = 31;
+				break;
+			default:
+				return Operador(">", Enumerados::Token::OP_LOGICO);
+			}
+		case 30:
+			return Operador(">=", Enumerados::Token::OP_LOGICO);
+		case 31:
+			if (vistazo() != '=')
+				return Operador(">>", Enumerados::Token::OP_MAT);
+			else {
+				estado = 32;
+				break;
+			}
+		case 32:
+			return Operador(">>=", Enumerados::Token::OP_ASIGN);
+		/*
+			Operadores signo !.
+		*/
+		case 34:
+			if (vistazo() != '=')
+				return Operador("!", Enumerados::Token::OP_LOGICO);
+			else {
+				estado = 35;
+				break;
+			}
+		case 35:
+			return Operador("!=", Enumerados::Token::OP_LOGICO);
+		/*
+			Operadores signo '.' .
+		*/
+		case 36:
+			if (vistazo() != '*')
+				return Operador(".", Enumerados::Token::OP_MEM_ACCESS);
+			else {
+				estado = 37;
+				break;
+			}
+		case 37:
+			return Operador(".*", Enumerados::Token::OP_MEM_ACCESS);
+		/*
+			Reconocimiento de cadenas.
+		*/
+		case 38:
+			{std::string cadena = "" + cActual;
+			cActual = _iManager.getNext();
+			while (isLetDigUnG(cActual)) {
+				cadena += cActual;
+				cActual = _iManager.getNext();
+			}
+			return Palabra(cadena, Enumerados::Token::ID);}
+		/*
+			Reconocimiento de integer.
+		*/
+		case 39:
+			{int num = int(cActual);
+			cActual = _iManager.getNext();
+			while (isNum(cActual)) {
+				num *= 10;
+				cActual = _iManager.getNext();
+				num += int(cActual);
+			}
+			return Numero(num, Enumerados::Token::INT);}
 
-	t->insertReservedWord("override", Enumerados::Token::OVERRIDE);
-	t->insertReservedWord("final", Enumerados::Token::FINAL);
-	t->insertReservedWord("import", Enumerados::Token::IMPORT);
-	t->insertReservedWord("module", Enumerados::Token::MODULE);
-	t->insertReservedWord("transaction_safe", Enumerados::Token::TRANSACTION_SAFE);
-	t->insertReservedWord("transaction_safe_dynamic", Enumerados::Token::TRANSACTION_SAFE_DYNAMIC);
+		default:
+			break;
+		}//Fin switch
+	
+
+		cActual = _iManager.getNext();
+	}//Fin while
 }
 
-Enumerados::Token AnalizadorLexico::getNextToken() {
-	return Enumerados::Token::ID;
-}

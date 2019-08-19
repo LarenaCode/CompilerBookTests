@@ -25,26 +25,27 @@ namespace Enumerados {
 		
 		
 		
-		ID = 500,
+		ID = 500, 
+		OP_ASIGN = 501,
+		OP_LOGICO = 502, OP_MAT = 503, OP_MEM_ACCESS = 504
 		
 
 	};
 }
 
-/*class Token
+class Token
 {
 public:
-	
-	static Token createToken(std::string nombre);
-	static void inicialize();
-	~Token();
-	std::string getNombre();
-	int getCodigo();
-	bool agregarValor(std::string valor, TablaEstados tablaEstados);
+	Token(Enumerados::Token codigo) {
+		_codigo = codigo;
+	};
+	~Token() {
+
+	};
+	Enumerados::Token getCodigo() {
+		return _codigo;
+	};
 
 private:
-	Token(std::string nombre, int codigo);
-	std::string _nombre;
-	int _codigo;
-	static int _count;
-};*/
+	Enumerados::Token _codigo;
+};

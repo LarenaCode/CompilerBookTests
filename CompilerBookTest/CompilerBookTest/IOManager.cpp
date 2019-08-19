@@ -42,6 +42,7 @@ char IOManager::getNextChar() {
 	char salida = _file[_puntero];
 	_puntero++;
 	igualarPunteros();
+	_preanalisis = salida;
 	return salida;
 }
 

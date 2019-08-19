@@ -155,9 +155,13 @@
   <ItemGroup>
     <ClInclude Include="IOManager.h" />
     <ClInclude Include="MapSimbolos.h" />
+    <ClInclude Include="Modelo\AnalysisManager.h" />
     <ClInclude Include="Modelo\ITablaSimbolos.h" />
     <ClInclude Include="Modelo\Lexico\AnalizadorLexico.h" />
     <ClInclude Include="Modelo\Lexico\C_Reservados.h" />
+    <ClInclude Include="Modelo\Lexico\Numero.h" />
+    <ClInclude Include="Modelo\Lexico\Operador.h" />
+    <ClInclude Include="Modelo\Lexico\Palabra.h" />
     <ClInclude Include="Modelo\Lexico\TablaEstados.h" />
     <ClInclude Include="Modelo\Lexico\Token.h" />
     <ClInclude Include="Modelo\TablaSimbolos.h" />
@@ -170,6 +174,7 @@
     <ClCompile Include="ErrorMsg.cpp" />
     <ClCompile Include="IOManager.cpp" />
     <ClCompile Include="MapSimbolos.cpp" />
+    <ClCompile Include="Modelo\AnalysisManager.cpp" />
     <ClCompile Include="Modelo\Lexico\AnalizadorLexico.cpp" />
     <ClCompile Include="Modelo\Lexico\C_Reservados.cpp" />
     <ClCompile Include="Modelo\Lexico\TablaEstados.cpp" />

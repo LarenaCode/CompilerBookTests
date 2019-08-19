@@ -60,6 +60,18 @@
     <ClInclude Include="Modelo\TablaSimbolosInizializador.h">
       <Filter>Archivos de origen\Model</Filter>
     </ClInclude>
+    <ClInclude Include="Modelo\AnalysisManager.h">
+      <Filter>Archivos de origen\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Modelo\Lexico\Palabra.h">
+      <Filter>Archivos de origen\Model\Lexico\Encabezados</Filter>
+    </ClInclude>
+    <ClInclude Include="Modelo\Lexico\Numero.h">
+      <Filter>Archivos de origen\Model\Lexico\Encabezados</Filter>
+    </ClInclude>
+    <ClInclude Include="Modelo\Lexico\Operador.h">
+      <Filter>Archivos de origen\Model\Lexico\Encabezados</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -91,6 +103,9 @@
     </ClCompile>
     <ClCompile Include="MapSimbolos.cpp">
       <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="Modelo\AnalysisManager.cpp">
+      <Filter>Archivos de origen\Model</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
